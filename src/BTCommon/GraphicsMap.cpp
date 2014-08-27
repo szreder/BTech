@@ -228,10 +228,13 @@ void GraphicsMap::changeScale(qreal scale)
 {
 	finalScale = scale;
 
-	QTimeLine *scaleAnim = new QTimeLine(SCALE_ANIM_TIME, this);
-	scaleAnim->setUpdateInterval(SCALE_ANIM_INTERVAL);
-	connect(scaleAnim, &QTimeLine::valueChanged, this, &GraphicsMap::scaleView);
-	connect(scaleAnim, &QTimeLine::finished, this, &GraphicsMap::scaleAnimFinished);
+	static QTimeLine *scaleAnim = [this] {
+		QTimeLine *result = new QTimeLine(SCALE_ANIM_TIME, this);
+		result->setUpdateInterval(SCALE_ANIM_INTERVAL);
+		connect(result, &QTimeLine::valueChanged, this, &GraphicsMap::scaleView);
+		return result;
+	}();
+
 	scaleAnim->start();
 }
 
@@ -435,9 +438,4 @@ void GraphicsMap::scaleView()
 
 	QGraphicsView::scale(scale / initScale, scale / initScale);
 	update();
-}
-
-void GraphicsMap::scaleAnimFinished()
-{
-	delete sender();
 }

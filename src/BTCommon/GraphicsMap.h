@@ -140,7 +140,6 @@ private slots:
 	void onHexesNeedUpdating();
 
 	void scaleView();
-	void scaleAnimFinished();
 };
 
 #endif // GRAPHICSMAP_H
