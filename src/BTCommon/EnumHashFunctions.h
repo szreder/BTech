@@ -32,9 +32,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		enum class EnumName : TypeName; \
 	} \
 	\
-	uint qHash(TypeName, uint) noexcept (true); \
+	constexpr uint qHash(TypeName, uint) noexcept (true); \
 	\
-	static inline uint qHash(BTech::EnumName enumVar) \
+	constexpr inline uint qHash(BTech::EnumName enumVar) \
 	{ \
 		return qHash(toUnderlying(enumVar), 0); \
 	} \
