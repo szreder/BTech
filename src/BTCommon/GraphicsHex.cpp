@@ -166,19 +166,19 @@ void GraphicsHex::addGridGraphicsObjects()
 	graphicsObjects.base =
 		new GridGraphicsObject(this,
 		                       &GraphicsHex::paintBaseGrid,
-		                       graphicsObjects.BaseZValue);
+		                       GraphicsHex::BaseZValue);
 	graphicsObjects.property =
 		new GridGraphicsObject(this,
 		                       &GraphicsHex::paintPropertyGrid,
-		                       graphicsObjects.PropertyZValue);
+		                       GraphicsHex::PropertyZValue);
 	graphicsObjects.mouseClick =
 		new GridGraphicsObject(this,
 		                       &GraphicsHex::paintMouseClickDependentGrid,
-		                       graphicsObjects.MouseClickZValue);
+		                       GraphicsHex::MouseClickZValue);
 	graphicsObjects.mouseMove =
 		new GridGraphicsObject(this,
 		                       &GraphicsHex::paintMouseMoveDependentGrid,
-		                       graphicsObjects.MouseMoveZValue);
+		                       GraphicsHex::MouseMoveZValue);
 }
 
 QRectF GraphicsHex::boundingRect() const

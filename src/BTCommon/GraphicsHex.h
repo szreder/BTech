@@ -82,12 +82,12 @@ private:
 		GridGraphicsObject *property;
 		GridGraphicsObject *mouseClick;
 		GridGraphicsObject *mouseMove;
-
-		static const int BaseZValue       = 1;
-		static const int PropertyZValue   = 2;
-		static const int MouseClickZValue = 3;
-		static const int MouseMoveZValue  = 4;
 	} graphicsObjects;
+
+	static const int BaseZValue       = 1;
+	static const int PropertyZValue   = 2;
+	static const int MouseClickZValue = 3;
+	static const int MouseMoveZValue  = 4;
 
 	struct Color {
 		static const QColor Grid;
