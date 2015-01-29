@@ -146,12 +146,6 @@ inline uint qHash(const Coordinate &c, uint seed)
 	return qHash(QPair <int, int>(c.x(), c.y()), seed);
 }
 
-template <typename T, typename U>
-inline const Coordinate operator + (const T &c1, const U &c2)
-{
-	return Coordinate(QPoint(c1.x() + c2.x(), c1.y() + c2.y()));
-}
-
 /**
  * \class Position
  * Represents a position that a unit can have (not necessarily Mech).

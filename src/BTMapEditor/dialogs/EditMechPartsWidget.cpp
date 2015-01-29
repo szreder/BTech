@@ -135,7 +135,7 @@ QList <int> EditMechPartsWidget::getSelectedIndexes() const
 	QList <int> result;
 	for (const QModelIndex &index : attachedWeapons->selectionModel()->selectedRows())
 		result.append(index.row());
-	qSort(result.begin(), result.end());
+	std::sort(result.begin(), result.end());
 
 	return result;
 }

@@ -113,7 +113,7 @@ QList <T *> ItemComboBox <T>::getItems() const
 template <typename T>
 void ItemComboBox <T>::refresh()
 {
-	qSort(items.begin(), items.end(), [](const T *lhs, const T *rhs){
+	std::sort(items.begin(), items.end(), [](const T *lhs, const T *rhs){
 		return QString(*lhs) < QString(*rhs);
 	});
 	QComboBox::clear();
