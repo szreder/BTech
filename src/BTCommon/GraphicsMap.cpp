@@ -235,6 +235,7 @@ void GraphicsMap::changeScale(qreal scale)
 		return result;
 	}();
 
+	scaleAnim->stop();
 	scaleAnim->start();
 }
 
