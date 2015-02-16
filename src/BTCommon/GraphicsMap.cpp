@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2014 by Piotr Majcherczyk <fynxor [at] gmail [dot] com>
-Copyright (C) 2014 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
+Copyright (C) 2014-2015 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
 This file is part of BTech Project.
 
 	BTech Project is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@ This file is part of BTech Project.
 #include "BTCommon/GraphicsEntity.h"
 #include "BTCommon/GraphicsFactory.h"
 #include "BTCommon/GraphicsHex.h"
+#include "BTCommon/GraphicsItemsTypes.h"
 #include "BTCommon/GraphicsMap.h"
 #include "BTCommon/Grid.h"
 #include "BTCommon/MechEntity.h"
@@ -176,6 +177,7 @@ void GraphicsMap::initHexes()
 		connect(graphicsHex, &GraphicsHex::mouseEntered,   this, &GraphicsMap::onHexTracked);
 		connect(graphicsHex, &GraphicsHex::mouseLeft,      this, &GraphicsMap::onHexAbandoned);
 		connect(graphicsHex, &GraphicsHex::newAreaTracked, this, &GraphicsMap::onHexNewAreaTracked);
+		connect(graphicsHex, &GraphicsHex::painted,        this, &GraphicsMap::onHexPainted);
 	}
 }
 
@@ -247,6 +249,15 @@ void GraphicsMap::mouseMoveEvent(QMouseEvent *event)
 		int newY = verticalScrollBar()->value() - event->y() + mousePosition.y();
 		verticalScrollBar()->setValue(newY);
 		QCursor::setPos(mapToGlobal(mousePosition));
+	}
+
+	if (event->buttons() & Qt::LeftButton) {
+		QList <QGraphicsItem *> clickedItems = items(event->pos());
+		for (QGraphicsItem *item : clickedItems)
+			if (item->type() == BTech::GraphicsItem::Hex) {
+				GraphicsHex *hex = qgraphicsitem_cast<GraphicsHex *>(item);
+				hex->emitPainted();
+			}
 	}
 
 	QGraphicsView::mouseMoveEvent(event);
@@ -394,6 +405,11 @@ void GraphicsMap::onHexClicked(Hex *hex)
 	emit hexClicked(hex);
 	map->setCurrentHex(hex);
 	map->trigger();
+}
+
+void GraphicsMap::onHexPainted(Hex *hex)
+{
+	emit hexPainted(hex);
 }
 
 void GraphicsMap::onHexTracked(Hex *hex)

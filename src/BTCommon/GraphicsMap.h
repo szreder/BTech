@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2014 by Piotr Majcherczyk <fynxor [at] gmail [dot] com>
-Copyright (C) 2014 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
+Copyright (C) 2014-2015 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
 This file is part of BTech Project.
 
 	BTech Project is free software: you can redistribute it and/or modify
@@ -69,6 +69,7 @@ signals:
 	void hexDisplayStarted(const Hex *hex);
 	void hexDisplayQuit();
 	void hexDisplayChanged();
+	void hexPainted(Hex *hex);
 
 private:
 	void initMap();
@@ -126,6 +127,7 @@ private slots:
 	void onUnitInitialized();
 
 	void onHexClicked(Hex *hex);
+	void onHexPainted(Hex *hex);
 	void onHexTracked(Hex *hex);
 	void onHexAbandoned();
 	void onHexNewAreaTracked();

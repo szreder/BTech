@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2014 by Piotr Majcherczyk <fynxor [at] gmail [dot] com>
-Copyright (C) 2014 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
+Copyright (C) 2014-2015 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
 This file is part of BTech Project.
 
 	BTech Project is free software: you can redistribute it and/or modify
@@ -52,6 +52,7 @@ void BTMapEditor::initInfoBar()
 void BTMapEditor::initMap()
 {
 	connect(getGraphicsMap(), static_cast<void (GraphicsMap::*)(Hex *)>(&GraphicsMap::hexClicked), this, &BTMapEditor::onHexClicked);
+	connect(getGraphicsMap(), static_cast<void (GraphicsMap::*)(Hex *)>(&GraphicsMap::hexPainted), this, &BTMapEditor::onHexClicked);
 }
 
 void BTMapEditor::initToolBar()

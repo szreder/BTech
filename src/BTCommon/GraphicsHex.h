@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2014 by Piotr Majcherczyk <fynxor [at] gmail [dot] com>
-Copyright (C) 2014 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
+Copyright (C) 2014-2015 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
 This file is part of BTech Project.
 
 	BTech Project is free software: you can redistribute it and/or modify
@@ -42,6 +42,8 @@ public:
 	GraphicsHex(Hex *hex);
 	~GraphicsHex();
 
+	int type() const override;
+
 	QList <GridGraphicsObject *> getGridGraphicsObjects();
 	QPointF getNode(int nodeNumber) const;
 	QPointF getAbsNode(int nodeNumber) const;
@@ -51,6 +53,7 @@ public:
 	void setTracked(bool tracked);
 	bool isTracked() const;
 	int getTrackedArea() const;
+	void emitPainted();
 
 	void init();
 	void clear();
@@ -71,6 +74,7 @@ signals:
 	void mouseEntered(Hex *hex);
 	void mouseLeft(Hex *hex);
 	void newAreaTracked(Hex *hex);
+	void painted(Hex *hex);
 
 private:
 	static const int DEFAULT_HEX_SIZE = 60;

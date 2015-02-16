@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2014 by Piotr Majcherczyk <fynxor [at] gmail [dot] com>
-Copyright (C) 2014 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
+Copyright (C) 2014-2015 by Bartosz Szreder <szreder [at] mimuw [dot] edu [dot] pl>
 This file is part of BTech Project.
 
 	BTech Project is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@ This file is part of BTech Project.
 #include "BTCommon/EnumHashFunctions.h"
 #include "BTCommon/GraphicsFactory.h"
 #include "BTCommon/GraphicsHex.h"
+#include "BTCommon/GraphicsItemsTypes.h"
 #include "BTCommon/MechEntity.h"
 #include "BTCommon/Tile.h"
 
@@ -102,6 +103,11 @@ GraphicsHex::~GraphicsHex()
 	GraphicsFactory::erase(this);
 }
 
+int GraphicsHex::type() const
+{
+	return BTech::GraphicsItem::Hex;
+}
+
 QList <GridGraphicsObject *> GraphicsHex::getGridGraphicsObjects()
 {
 	return { graphicsObjects.base,
@@ -145,6 +151,11 @@ bool GraphicsHex::isTracked() const
 int GraphicsHex::getTrackedArea() const
 {
 	return trackedArea;
+}
+
+void GraphicsHex::emitPainted()
+{
+	emit painted(hex);
 }
 
 void GraphicsHex::init()
