@@ -27,7 +27,7 @@ NewMapDialog::NewMapDialog(QWidget *parent)
 {
 	setFixedSize(200, 200);
 
-QHBoxLayout *widthLayout = new QHBoxLayout;
+	QHBoxLayout *widthLayout = new QHBoxLayout;
 	QLabel *widthLabel = new QLabel(BTech::Strings::LabelWidth + ": ");
 	widthLine = new QSpinBox;
 	widthLabel->setBuddy(widthLine);
@@ -54,6 +54,7 @@ QHBoxLayout *widthLayout = new QHBoxLayout;
 	layout->addWidget(confirmButton);
 
 	setLayout(layout);
+	setWindowTitle(BTech::Strings::NewMapDialog);
 }
 
 NewMapDialog::~NewMapDialog()

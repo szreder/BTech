@@ -99,6 +99,7 @@ namespace BTech {
 
 		const QString EditMechsDialog   = QObject::tr("Edit mechs");
 		const QString EditWeaponsDialog = QObject::tr("Edit weapons");
+		const QString NewMapDialog      = QObject::tr("New map");
 
 		const QString ErrorWeaponNameEmpty  = QObject::tr("Weapon name cannot be empty");
 		const QString ErrorWeaponNameExists = QObject::tr("A weapon with the same name has already been defined");
