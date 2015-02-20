@@ -115,7 +115,7 @@ namespace BTech {
 		static const int LightWoods = 2;
 		static const int HeavyWoods = 3;
 		static const int Rough      = 2;
-		static const int Water      = 1;
+		static const int Water      = 2;
 	};
 
 	extern const BiHash <Terrain, QString> terrainStringChange;
