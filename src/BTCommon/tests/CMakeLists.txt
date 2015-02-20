@@ -1,5 +1,6 @@
 set (TESTS
-	WalkRangeTest
+	MovementTest
+	TerrainTest
 )
 
 foreach (test ${TESTS})
